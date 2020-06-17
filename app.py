@@ -88,7 +88,7 @@ def update_graph(Manager,Muns):
                 fill_value=0)
         #    import plotly.graph_objs as go  
         tr=go.Bar(x=pv.index, y=pv[pv.columns[0]], name=Muns,marker=dict(color=pv[pv.columns[0]]))
-            
+        Manager=Muns    
     return {
     'data': [tr],
     'layout':
