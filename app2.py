@@ -3,6 +3,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
 import pandas as pd
+from dash.dependencies import Input, Output
 
 cr=pd.read_csv("cr.csv",parse_dates=True,index_col="FECHA_INGRESO")
 ejxx=pd.read_csv("ejxx.csv",parse_dates=True,index_col="FECHA_INGRESO")
