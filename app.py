@@ -18,11 +18,6 @@ server = app.server
 
 app.layout = html.Div([
     
-    html.Div([
-    html.H1("Mapa"),
-    html.Iframe(id="map",srcDoc=open("covid_por_mpio.html",encoding="utf8").read(),width="100%",height="600")
-        
-    ]),
         
     html.Div(
         [
@@ -50,9 +45,15 @@ app.layout = html.Div([
                 value='Nada'),
         ],
         style={'width': '25%',
-               'display': 'inline-block'}), 
+               'display': 'inline-block'}),
+
+    html.Div([
+    html.H1("Mapa"),
+    html.Iframe(id="map",srcDoc=open("covid_por_mpio.html",encoding="utf8").read(),width="100%",height="300"),
+    dcc.Graph(id='funnel-graph')    
+    ]) 
     
-    dcc.Graph(id='funnel-graph')   
+       
 ])
 
 @app.callback(Output('funnel-graph', 'figure'),[Input('Manager', 'value'),Input('Muns', 'value')])
