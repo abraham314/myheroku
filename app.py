@@ -17,6 +17,13 @@ app = dash.Dash()
 server = app.server
 
 app.layout = html.Div([
+
+    html.Div([
+    html.H1("Mapa"),
+    html.Iframe(id="map",srcDoc=open("covid_por_mpio.html",encoding="utf8").read(),width="100%",height="600")
+        
+    ]),
+       
     html.H2("Casos"),
     html.Div(
         [
