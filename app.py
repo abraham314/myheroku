@@ -14,6 +14,7 @@ mgr_options=["Pais"]+mgr_options
 muns=["Nada"]+list(np.sort(ejxx["municipio_resx"].unique()))
 
 app = dash.Dash()
+server = app.server
 
 app.layout = html.Div([
     html.H2("Casos"),
