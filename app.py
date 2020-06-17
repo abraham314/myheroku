@@ -10,7 +10,7 @@ cr=pd.read_csv("cr.csv",parse_dates=True,index_col="FECHA_INGRESO")
 ejxx=pd.read_csv("ejxx.csv",parse_dates=True,index_col="FECHA_INGRESO")
 
 mgr_options = list(np.sort(cr["edo"].unique()))
-mgr_options=["Pais"]+mgr_options
+mgr_options=["País"]+mgr_options
 muns=["Nada"]+list(np.sort(ejxx["municipio_resx"].unique()))
 
 app = dash.Dash()
