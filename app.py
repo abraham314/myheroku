@@ -20,7 +20,7 @@ app.layout = html.Div([
     
     html.Div([
     html.H1("Mapa"),
-    html.Iframe(id="map",srcDoc=open("covid_por_mpio.html",encoding="utf8").read(),width="100%",height="600")
+    html.Iframe(id="map",srcDoc=open("covid_por_mpio.html",encoding="utf8").read(),width="80%",height="400")
         
     ]),
         
@@ -89,7 +89,7 @@ def update_graph(Manager,Muns):
                 fill_value=0)
         #    import plotly.graph_objs as go  
         tr=go.Bar(x=pv.index, y=pv[pv.columns[0]], name=Muns,marker=dict(color=pv[pv.columns[0]]))
-        #Manager=Muns    
+        Manager=Muns    
     return {
     'data': [tr],
     'layout':
