@@ -17,16 +17,16 @@ app = dash.Dash()
 server = app.server
 
 app.layout = html.Div([
-
+    
     html.Div([
     html.H1("Mapa"),
     html.Iframe(id="map",srcDoc=open("covid_por_mpio.html",encoding="utf8").read(),width="100%",height="600")
         
     ]),
-       
-    html.H2("Casos"),
+        
     html.Div(
         [
+            html.H2("Casos"),
             dcc.Dropdown(
                 id="Manager",
                 options=[{
@@ -37,11 +37,10 @@ app.layout = html.Div([
         ],
         style={'width': '25%',
                'display': 'inline-block'}),
-    dcc.Graph(id='funnel-graph'),
-    html.H3("Casos Mpo."),
     
-    html.Div(
+        html.Div(
         [
+            html.H3("Casos Mpo."),
             dcc.Dropdown(
                 id="Muns",
                 options=[{
@@ -51,7 +50,9 @@ app.layout = html.Div([
                 value='Nada'),
         ],
         style={'width': '25%',
-               'display': 'inline-block'})    
+               'display': 'inline-block'}), 
+    
+    dcc.Graph(id='funnel-graph')   
 ])
 
 @app.callback(Output('funnel-graph', 'figure'),[Input('Manager', 'value'),Input('Muns', 'value')])
@@ -88,7 +89,7 @@ def update_graph(Manager,Muns):
                 fill_value=0)
         #    import plotly.graph_objs as go  
         tr=go.Bar(x=pv.index, y=pv[pv.columns[0]], name=Muns,marker=dict(color=pv[pv.columns[0]]))
-        Manager=Muns    
+        #Manager=Muns    
     return {
     'data': [tr],
     'layout':
@@ -97,3 +98,4 @@ def update_graph(Manager,Muns):
 
 if __name__ == '__main__':
     app.run_server(debug=True,use_reloader=False)
+
